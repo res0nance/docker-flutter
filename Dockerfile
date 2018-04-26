@@ -12,6 +12,10 @@ RUN unzip android-sdk.zip -d android-sdk-linux && rm -f android-sdk.zip
 RUN yes | android-sdk-linux/tools/bin/sdkmanager --licenses
 RUN android-sdk-linux/tools/bin/sdkmanager "platform-tools" "platforms;android-${ANDROID_COMPILE_SDK}" "build-tools;${ANDROID_BUILD_TOOLS}" --sdk_root="android-sdk-linux"
 
+RUN echo "en_US UTF-8" > /etc/locale.gen
+RUN locale-gen en_US.UTF-8
+RUN dpkg-reconfigure locales -f noninteractive -p critical
+
 RUN wget --quiet --output-document=flutter.tar.xz https://storage.googleapis.com/flutter_infra/releases/beta/linux/flutter_linux_v${FLUTTER_VERSION}.tar.xz
 RUN tar xf flutter.tar.xz && rm -f flutter.tar
 
