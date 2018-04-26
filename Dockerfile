@@ -16,7 +16,6 @@ RUN echo "en_US UTF-8" > /etc/locale.gen
 RUN locale-gen en_US.UTF-8
 RUN dpkg-reconfigure locales -f noninteractive -p critical
 ENV LANG=en_US.UTF-8
-ENV LANGUAGE=en_US:en
 
 RUN wget --quiet --output-document=flutter.tar.xz https://storage.googleapis.com/flutter_infra/releases/beta/linux/flutter_linux_v${FLUTTER_VERSION}.tar.xz
 RUN tar xf flutter.tar.xz && rm -f flutter.tar
