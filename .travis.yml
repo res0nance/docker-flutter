@@ -1,13 +1,16 @@
 sudo: required
-
 services:
-  - docker
-
+- docker
 script:
-  - | 
-    docker build -t res0nance/flutter . \
-    --build-arg ANDROID_SDK_TOOLS="3859397" \
-    --build-arg ANDROID_BUILD_TOOLS="27.0.3" \
-    --build-arg ANDROID_COMPILE_SDK=24 \
-    --build-arg FLUTTER_VERSION="0.3.1-beta"
-  - docker ps -a
+- |
+  docker build -t res0nance/flutter . \
+  --build-arg ANDROID_SDK_TOOLS="3859397" \
+  --build-arg ANDROID_BUILD_TOOLS="27.0.3" \
+  --build-arg ANDROID_COMPILE_SDK=24 \
+  --build-arg FLUTTER_VERSION="0.3.1-beta"
+- docker ps -a
+- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+- docker push res0nance/flutter
+env:
+  matrix:
+    secure: AzfPEwCQxkOadX+0CGXv9BTTzOFyi4oWZflvgOex4ab9rhycRK6FPeVcYs+Z8qOABj663OXbp3SVt5BIzI7r45S/xjU9RJUJbsEi6blzyNhl+2CT2S/fJZKbv5N/OpB60jV26vPnYiYqUj1Ttqvavz7KyNdOA07A5MN6p0Y9SzgKWzfRvpFOieKgHqSD5bdL2P1oycLGEQbzz1P1tYx4eVejKr9jap9721bMu6WAUrtyKSGnZjm9ep4Sotc81dom7OVIV59YGUx5c3s7b0hY1SNZjLtHQYrwnr1Csd9Ws2rH+jcVtlPSfrWrinQrP+Z0vDYbBYWJ0QoL5DwROhjpACaYa6O7ZY5Krh6a/jI61Wce5jWHa84m16zxj1Nd0dGGKseUTvAo540YFjuS776Yi79PKzAWzkKKQLo3Ct9uoGkHj2XEnPxlUQhbKqLhIzfRIbi7T1Yssm2E9JYU/fq22/WVWnjWoSMe2+lYjJ6fdiJoD5+0q/Sho225kXPDCiXE82b2W6TZRLYW1dCD0uqE6g19c3Nv5iTP2l12iV4rNz+5B+NG6EDvftnoah3TJc13iRowU1f3uVR+f9od+FMXtSTW1y6sZAD/Mk/dtI/LkFCZW2KDCAWHEj9J9viniEKeb7qywOaT1bhJVVoETO0I3bFZmgjq/NwOzXeYV30WsMQ=
