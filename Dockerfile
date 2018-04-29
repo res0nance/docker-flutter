@@ -20,8 +20,8 @@ RUN android-sdk-linux/tools/bin/sdkmanager "platform-tools" "platforms;android-$
 #ENV LANG=en_US.UTF-8
 
 RUN wget --quiet --output-document=flutter.tar.xz \
-    https://storage.googleapis.com/flutter_infra/releases/beta/linux/flutter_linux_v${FLUTTER_VERSION}.tar.xz && \
-    tar xf flutter.tar.xz && rm -f flutter.tar.xz
+    https://storage.googleapis.com/flutter_infra/releases/beta/linux/flutter_linux_v${FLUTTER_VERSION}.tar.xz
+RUN tar xf flutter.tar.xz && rm -f flutter.tar.xz
 
 ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
 ENV ANDROID_HOME=$PWD/android-sdk-linux
