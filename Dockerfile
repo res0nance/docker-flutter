@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk
+FROM openjdk:8-jdk-slim
 
 ARG ANDROID_SDK_TOOLS="3859397"
 ARG ANDROID_BUILD_TOOLS="27.0.3"
@@ -7,7 +7,7 @@ ARG FLUTTER_VERSION="0.3.1-beta"
 
 RUN \
   apt-get --quiet update --yes && \
-  apt-get --quiet install --yes wget tar unzip lib32stdc++6 lib32z1 locales libglu1-mesa
+  apt-get --quiet install --yes git wget tar unzip lib32stdc++6 lib32z1 locales libglu1-mesa
 
 RUN locale-gen en_US.UTF-8 && dpkg-reconfigure locales -f noninteractive -p critical
 ENV LANG=en_US.UTF-8
