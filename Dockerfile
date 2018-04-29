@@ -8,8 +8,7 @@ ARG FLUTTER_VERSION="0.3.1-beta"
 RUN \
   apk update && \
   apk upgrade && \
-  apk add openjdk8 wget tar unzip lib32stdc++6 lib32z1 && \
-  rm -rf /var/cache/apk/*
+  apk add --no-cache openjdk8 wget tar unzip #lib32stdc++6 lib32z1
 RUN wget --quiet --output-document=android-sdk.zip https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_SDK_TOOLS}.zip && \
     unzip android-sdk.zip -d android-sdk-linux && rm -f android-sdk.zip
 RUN yes | android-sdk-linux/tools/bin/sdkmanager --licenses
