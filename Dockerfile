@@ -7,7 +7,7 @@ ARG FLUTTER_VERSION="0.3.1-beta"
 
 RUN \
   apt-get --quiet update --yes && \
-  apt-get --quiet install --yes wget tar unzip lib32stdc++6 lib32z1 locales
+  apt-get --quiet install --yes wget tar unzip lib32stdc++6 lib32z1 locales libglu1-mesa
 RUN wget --quiet --output-document=android-sdk.zip https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_SDK_TOOLS}.zip && \
     unzip android-sdk.zip -d android-sdk-linux && rm -f android-sdk.zip
 RUN yes | android-sdk-linux/tools/bin/sdkmanager --licenses
