@@ -3,7 +3,7 @@ FROM openjdk:8-jdk-slim
 ARG ANDROID_SDK_TOOLS="3859397"
 ARG ANDROID_BUILD_TOOLS="27.0.3"
 ARG ANDROID_COMPILE_SDK="24"
-ARG FLUTTER_VERSION="0.3.1-beta"
+ARG FLUTTER_VERSION="0.3.2-beta"
 
 RUN \
   apt-get --quiet update --yes && \
