@@ -14,7 +14,9 @@ ENV LANG=en_US.UTF-8
 
 RUN wget --quiet --output-document=android-sdk.zip https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_SDK_TOOLS}.zip && \
     unzip android-sdk.zip -d android-sdk-linux && rm -f android-sdk.zip
-RUN yes | android-sdk-linux/tools/bin/sdkmanager --licenses
+RUN mkdir ~/.android
+RUN touch ~/.android/repositories.cfg
+RUN yes | android-sdk-linux/tools/bin/sdkmanager --licenses > /dev/null
 RUN android-sdk-linux/tools/bin/sdkmanager "platform-tools" "platforms;android-${ANDROID_COMPILE_SDK}" "build-tools;${ANDROID_BUILD_TOOLS}" --sdk_root="android-sdk-linux"
 
 RUN wget --quiet --output-document=flutter-sdk.tar.xz https://storage.googleapis.com/flutter_infra/releases/beta/linux/flutter_linux_v${FLUTTER_VERSION}.tar.xz && \
